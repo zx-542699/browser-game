@@ -3,20 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>网页游戏框架</title>
+  <title>修仙文字游戏</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <h1>🎮 我的游戏</h1>
-    <div id="hud">
-      <span>分数：<b id="score">0</b></span>
-      <span id="status" class="status">准备中…</span>
+  <!-- 创建角色页 -->
+  <div id="login-screen" class="screen">
+    <div class="card">
+      <h1>🌄 修仙文字游戏</h1>
+      <p class="subtitle">凡人亦可问道，仙途自此而始</p>
+      <input id="input-name" type="text" maxlength="8" placeholder="输入你的道号（留空则叫无名散修）">
+      <button id="btn-create" class="btn btn-primary">踏入仙途</button>
     </div>
-    <canvas id="game" width="480" height="480"></canvas>
-    <p class="tips" id="tips">按 空格 / 点屏幕 开始 · 方向键/WASD 移动 · 手机屏幕滑动控制</p>
   </div>
-  <script src="js/game.js"></script>
-  <script src="js/snake.js"></script>
+
+  <!-- 游戏主界面 -->
+  <div id="game-screen" class="screen" style="display:none">
+    <div class="card game-card">
+      <h1>🌄 修仙文字游戏</h1>
+
+      <!-- 状态面板 -->
+      <div class="status-panel">
+        <div class="status-row">
+          <span>道号：<b id="player-name">-</b></span>
+          <span>境界：<b id="player-realm" class="realm">-</b></span>
+        </div>
+        <div class="status-row">
+          <span>修为：<b id="player-exp">0</b></span>
+          <span>生命：<b id="player-hp">100/100</b></span>
+        </div>
+        <div class="status-row">
+          <span>灵石：<b id="player-stone">0</b></span>
+          <span>丹药：<b id="player-pills">0</b></span>
+        </div>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="btn-group">
+        <button id="btn-cultivate" class="btn btn-primary">🧘 打坐修炼</button>
+        <button id="btn-explore" class="btn btn-warn">🚶 下山历练</button>
+        <button id="btn-breakthrough" class="btn btn-gold" disabled>突破</button>
+        <button id="btn-pill" class="btn">💊 服丹药</button>
+        <button id="btn-save" class="btn btn-ghost">💾 存档</button>
+        <button id="btn-delete-save" class="btn btn-danger">🗑️ 删档重来</button>
+      </div>
+
+      <!-- 游戏日志 -->
+      <div id="log-box" class="log-box"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,33 +1,129 @@
-/* ===== 全局样式：手机/电脑都好看 ===== */
+/* ===== 修仙古风样式：手机/电脑自适应 ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
-  background: #0f172a;
-  color: #e2e8f0;
-  font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(160deg, #0d1b2a 0%, #1b263b 50%, #0d1b2a 100%);
+  background-attachment: fixed;
+  color: #d4c9a8;
+  font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  padding: 12px;
 }
-.wrap { text-align: center; }
-h1 { font-size: 24px; margin-bottom: 10px; }
-#hud {
+
+/* 页面容器 */
+.screen {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* 卡片 */
+.card {
+  background: rgba(20, 32, 48, 0.92);
+  border: 1px solid rgba(212, 201, 168, 0.2);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  text-align: center;
+}
+
+h1 {
+  font-size: 26px;
+  color: #f0d890;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #8a9bb8;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* 输入框 */
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(212,201,168,.3);
+  background: rgba(255,255,255,.05);
+  color: #e8dfc8;
+  font-size: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  outline: none;
+}
+input[type="text"]:focus { border-color: #f0d890; }
+
+/* 按钮 */
+.btn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(212,201,168,.25);
+  background: rgba(255,255,255,.06);
+  color: #e8dfc8;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .15s;
+  touch-action: manipulation;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primary { background: #2d6a4f; border-color: #40916c; color: #fff; }
+.btn-warn   { background: #9c6644; border-color: #b08968; color: #fff; }
+.btn-gold   { background: #b8860b; border-color: #d4a017; color: #fff; }
+.btn-ghost  { background: rgba(255,255,255,.08); }
+.btn-danger { background: #7f1d1d; border-color: #b91c1c; color: #ffd5d5; }
+
+/* 主界面 */
+.game-card { text-align: left; }
+
+/* 状态面板 */
+.status-panel {
+  background: rgba(255,255,255,.05);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 14px 0;
+  font-size: 15px;
+  line-height: 2;
+}
+.status-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: min(92vw, 480px);
-  margin: 0 auto 8px;
-  font-size: 16px;
 }
-.status { color: #fbbf24; }
-#game {
-  width: min(92vw, 480px);
-  height: min(92vw, 480px);
-  background: #1e293b;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.4);
-  touch-action: none; /* 禁止手机默认滚动/缩放，交给游戏处理 */
+.status-row b { color: #f0d890; font-weight: 600; }
+.realm { color: #ffd166 !important; }
+
+/* 按钮组 */
+.btn-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
 }
-.tips { margin-top: 10px; font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+/* 日志区 */
+.log-box {
+  background: rgba(0,0,0,.35);
+  border-radius: 10px;
+  padding: 12px;
+  height: 220px;
+  overflow-y: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #b8c4d6;
+}
+.log-line { border-bottom: 1px solid rgba(255,255,255,.05); padding: 3px 0; }
+.log-line:last-child { border-bottom: none; }
+
+/* 滚动条 */
+.log-box::-webkit-scrollbar { width: 6px; }
+.log-box::-webkit-scrollbar-thumb { background: rgba(240,216,144,.3); border-radius: 3px; }
