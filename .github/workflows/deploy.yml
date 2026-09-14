@@ -1,0 +1,39 @@
+# 自动部署到 GitHub Pages
+name: Deploy Game
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # 允许手动触发
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 构建（预留：以后有打包步骤放这里）
+        run: |
+          echo "纯静态页面，无需构建"
+          ls -la
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 部署
+        uses: actions/deploy-pages@v4
